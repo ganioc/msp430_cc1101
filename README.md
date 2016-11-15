@@ -36,5 +36,5 @@ cc1101rx/  Contains a RX program.
 try/   Contains a basic test program with UART 9600bps function.
 
 ## PS
-For later refernce. Hope can help others.
+For later reference. Hope can help others.
 
