@@ -7,7 +7,7 @@ Long before I had used CC1000 to make some RF module, and did a lot of range out
 ## Details
 __MSP430F149__ is a 16-bit RISC MCU, with 2KB RAM, 60KB FLASH and 256 B FLASH. Why I choose this one? It may not be the cheapest IC but the cheapest evaluation board I can get from online retail store in China. picture below: ![MSP430 board](pics/msp430f149_board.jpg =400x390)
 
-__BSL download board__  For program downloading. With picture below: ![BSL board](pics/BSL_downloader.jpg =400x390)
+__BSL download board__  For program downloading. With picture below: ![BSL board](pics/BSL_downloader.jpg =400x390)<img src="pics/BSL_downloader.jpg" alt="BSL_board" width="48">
 
 
 __IAR embedded work bench for MSP430__  IDE tool
