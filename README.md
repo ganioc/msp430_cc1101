@@ -26,6 +26,16 @@ hal_430f149/ board, io definiton, MCU type highly related.
 
 include/  Basic type definitions and HAL API.
 
+##### pins definition 
+Such as cc1101 control pins GDO0 and GDO2 are defined in hal_board.c file. 
+* pinGDO0  For cc1101 RX, TX sync word signal, which is used as the interrupt for msp430 to RX/TX packets
+* pinGDO2  Reserved
+* pinTest  Reserved
+* pinLED   0 to light the LED, 1 to turn off
+
+
+
+
 #### app
 This is the application code. Everytime you need to compile it in IAR, just add the main*.c file into the project as the main-entry file. Remove the old one of course.
 
