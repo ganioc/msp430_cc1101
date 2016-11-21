@@ -76,12 +76,17 @@ void halUartWrite(const char* buf, uint16 length)
 }
 
 //----------------------------------------------------------------------------------
-//  void halUartRead(uint8* buf, uint16 length)
+//  int halUartRead(uint8* buf, uint16 length)
 //----------------------------------------------------------------------------------
-void halUartRead()
+/**
+  return:
+  	TRUE   -  Received a valid message
+  	FALSE  -  Received nothing or not the end of a message
+*/
+int halUartRead()
 {
 	if( uart_rx_buffer_index == 0 ){
-		return;
+		return FALSE;
 	}
 	else if( uart_rx_buffer[uart_rx_buffer_index -1 ] == '\r' || 
 	      uart_rx_buffer[uart_rx_buffer_index -1] == '\n'){
@@ -93,10 +98,12 @@ void halUartRead()
     		//Send_String( uart_rx_buffer );
     		//Send_String( "\n");
 			
-    		uart_rx_buffer_index = 0;
+    		//uart_rx_buffer_index = 0;
+    		return TRUE;
   	}
 	else{
-    		;//Send_String( ".");   
+    		//Send_String( ".");   
+    		return FALSE;
   	}
 }
 
@@ -134,17 +141,22 @@ void halUartSendInt(const uint8 n){
   halUartSend(str);
 }
 
+void flushUartBuffer(){
+	uart_rx_buffer_index = 0;
+
+}
+
+
 /*******************************************
-函数名称：UART0_RXISR
-功    能：UART0的接收中断服务函数，在这里唤醒
-          CPU，使它退出低功耗模式
-参    数：无
-返回值  ：无
+function name：UART0_RXISR
+function：UART0 rx interrupt service 
+input：none
+return  ：none
 ********************************************/
 #pragma vector = UART0RX_VECTOR
 __interrupt void UART0_RXISR(void)
 {
-	 //LPM1_EXIT;                 //退出低功耗模式
+	 //LPM1_EXIT;                 //Exit Low Power MOde 1
 	uart_rx_buffer[uart_rx_buffer_index++] = RXBUF0;
 	  //Send_Byte(RXBUF0);
 }

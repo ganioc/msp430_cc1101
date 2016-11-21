@@ -36,10 +36,13 @@ extern "C" {
 #define HAL_UART_8_BIT_DATA           0x40
 
 
+// Added by spike yang 2016.11.21
+
 #define UART_RX_BUFFER_LEN     32
 
 
 extern char uart_rx_buffer[];
+extern short uart_rx_buffer_index;
 
 //----------------------------------------------------------------------------------
 // Function declarations
@@ -47,9 +50,10 @@ extern char uart_rx_buffer[];
 
 void halUartInit(uint8 baudrate, uint8 options);
 void halUartWrite(const char* buf, uint16 length);
-void halUartRead();
+int halUartRead();
 void  halUartSend(const char*buf);
 void halUartSendInt(const uint8 n);
+void flushUartBuffer();
 
 
 #ifdef  __cplusplus

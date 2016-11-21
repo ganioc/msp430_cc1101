@@ -186,7 +186,10 @@ void main(void){
 		
     while(1){
 	 // Read UART0 
-	 halUartRead();
+	 if( TRUE == halUartRead() ){
+	 	flushUartBuffer();
+		
+	 }
 	
         //toggle the LED P3.7
         halLedToggle(3);

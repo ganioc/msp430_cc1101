@@ -49,8 +49,11 @@ void main(void){
     txISR();
 	
     while(1){
-	// Read UART0 
-	halUartRead();
+	 // Read UART0 
+	 if( TRUE == halUartRead() ){
+	 	flushUartBuffer();
+		
+	 }
 	
         //toggle the LED P3.7
         halLedToggle(3);
